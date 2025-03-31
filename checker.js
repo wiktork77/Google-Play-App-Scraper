@@ -30,7 +30,7 @@ async function getFreeAndPaidAppsCount(path) {
     id_arr = Array.from(temp)
     arr_len = id_arr.length;
     for (let i = 0; i < id_arr.length; i++) {
-        process.stdout.write(`${i}/${arr_len}\r`);
+        fmanip.overwriteLog(`${i}/${id_arr.length}`)
         stat = await getAppFreeStatus(id_arr[i])
         status_dict[stat] += 1
     }

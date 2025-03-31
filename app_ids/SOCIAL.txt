@@ -1,0 +1,2 @@
+com.instagram.android
+com.twitter.android

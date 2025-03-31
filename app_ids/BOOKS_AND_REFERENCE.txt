@@ -1,0 +1,2 @@
+app.bible.lite.offline
+com.sirma.mobile.bible.android

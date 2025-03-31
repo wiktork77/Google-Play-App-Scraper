@@ -1,0 +1,2 @@
+com.ronasoftstudios.earmaxfxpro
+app.bpjs.mobile

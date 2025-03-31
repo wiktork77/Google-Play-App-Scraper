@@ -1,0 +1,2 @@
+com.artgenerator.texttoimage.aiart.outpaiting
+com.canva.editor

@@ -1,0 +1,2 @@
+com.jrustonapps.myearthquakealerts
+com.localweather.radar.climate

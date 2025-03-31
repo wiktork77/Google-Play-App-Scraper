@@ -1,0 +1,2 @@
+com.muslimappassistant.Islampro.qiblafinder.quranprayerdua
+com.greetingsisland.sam

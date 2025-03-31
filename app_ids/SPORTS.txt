@@ -1,0 +1,2 @@
+com.pulselive.bcci.android
+com.app.cricketapp

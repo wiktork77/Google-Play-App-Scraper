@@ -1,0 +1,2 @@
+com.findphone.clap.antitheft.donttouch.alarm
+com.widgetkit.widget.theme.wallpaper.icon.sceen.scape

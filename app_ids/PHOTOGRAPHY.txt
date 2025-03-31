@@ -1,0 +1,2 @@
+com.bigwinepot.nwdn.international
+com.everimaging.photoeffectstudio

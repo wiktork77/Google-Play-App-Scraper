@@ -1,0 +1,2 @@
+com.einnovation.temu
+com.meesho.supply

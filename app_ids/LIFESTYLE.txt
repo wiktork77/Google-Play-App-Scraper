@@ -1,0 +1,2 @@
+com.pinterest
+com.application.zomato.district

@@ -69,9 +69,22 @@ function inform(count) {
 
 
 async function convertIdsToData(destination) {
-    const idsPath = "D:\\Programowanie\\NodeJS\\Scraper\\app_ids\\all_ids.txt"
+    const idsPath = "./app_ids/all_ids.txt"
     fileContent = await fmanip.fileToSet(idsPath)
-    console.log("converting to set is done!")
+
+    console.log(fileContent);
+
+    console.log("removing duplicates done!")
+
+    if (!fmanip.fileExists(destination)) {
+        await fmanip.createFile(destination);
+    } else {
+        fmanip.overwriteFile(destination, "")
+    }
+
+    await fmanip.appendToFile("installs,score,ratings,reviews,categoryProb,isFree", destination);
+
+    console.log(`Parsing app data to ${destination}...`)
     let parsedCount = 0
     for (const appId of fileContent) {
         res = await extractDataFromApp(appId)
@@ -80,6 +93,7 @@ async function convertIdsToData(destination) {
             fmanip.appendToFile(row, destination)
         }
         parsedCount += 1
+        fmanip.overwriteLog(`${parsedCount}/${fileContent.size} parsed`);
         inform(parsedCount)
     }
 }

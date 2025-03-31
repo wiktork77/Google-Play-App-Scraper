@@ -13,8 +13,9 @@ async function fileToSet(path) {
       });
   
       rl.on('line', (line) => {
-        // Przetwarzanie linii
-        set.add(line);
+        if (line.length > 0 ) {
+          set.add(line);
+        }
       });
   
       rl.on('close', () => {
@@ -44,7 +45,7 @@ async function fileToSet(path) {
   }
 
 async function appendsIdsToFile(ids, path) {
-    if (!fs.existsSync(path)) {
+    if (!fileExists(path)) {
       await createFile(path);
     }
     file_set = await fileToSet(path);
@@ -58,11 +59,53 @@ async function appendsIdsToFile(ids, path) {
     return count
 }
 
+function fileExists(path) {
+  return fs.existsSync(path)
+}
+
+function overwriteFile(path, content) {
+  try {
+      fs.writeFileSync(path, content, 'utf8');
+      console.log(`Plik ${path} został nadpisany.`);
+  } catch (error) {
+      console.error(`Błąd podczas nadpisywania pliku ${path}:`, error);
+  }
+}
+
+function overwriteLog(message) {
+  process.stdout.write(`${message}\r`);
+}
 
 function getFileName(path) {
   spl = path.split("/")
   elem = spl[spl.length - 1]
   return elem.slice(0, elem.length - 4)
+}
+
+function mergeFiles(paths, outputPath) {
+  if (!fileExists(outputPath)) {
+    createFile(outputPath);
+  }
+  try {
+      let mergedContent = '';
+      
+      paths.forEach(filePath => {
+          if (fs.existsSync(filePath)) {
+              const content = fs.readFileSync(filePath, 'utf8');
+              console.log("content: " + content.slice(0, -1));
+              if (content.length > 0 ) {
+                mergedContent += content.slice(0, -1) + '\n';
+              }
+          } else {
+              console.warn(`File doesn't exist: ${filePath}`);
+          }
+      });
+      
+      fs.writeFileSync(outputPath, mergedContent, 'utf8');
+      console.log(`Merged files to: ${outputPath}`);
+  } catch (error) {
+      console.error('Error while merging files:', error);
+  }
 }
 
 
@@ -91,5 +134,10 @@ module.exports = {
     appendsIdsToFile,
     fileToSet,
     appendToFile,
-    getFileName
+    getFileName,
+    createFile,
+    fileExists,
+    mergeFiles,
+    overwriteLog,
+    overwriteFile
 }

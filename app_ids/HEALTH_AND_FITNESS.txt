@@ -1,0 +1,2 @@
+com.blood.sugar.monitor
+com.cactus.tracker.bloodpressure

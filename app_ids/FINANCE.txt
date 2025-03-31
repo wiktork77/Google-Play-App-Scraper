@@ -1,0 +1,2 @@
+com.phonepe.app
+com.kotak811mobilebankingapp.instantsavingsupiscanandpayrecharge

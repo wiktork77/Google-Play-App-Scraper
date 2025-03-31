@@ -1,0 +1,2 @@
+us.zoom.videomeetings
+com.microsoft.teams

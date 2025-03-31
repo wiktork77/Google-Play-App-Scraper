@@ -1,0 +1,2 @@
+com.grofers.customerapp
+com.zeptoconsumerapp

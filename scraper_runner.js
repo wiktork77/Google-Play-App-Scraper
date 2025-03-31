@@ -37,13 +37,9 @@ async function run(fpath, countryCode, cat) {
 
 async function fillRatioFile(path) {
     ratio = await checker.getFreeAndPaidAppsCount(path)
-    console.log("cp1");
     ratio_path = produceRatioPath(path)
-    console.log("cp2");
     ratio_content = produceRatioContent(ratio)
-    console.log("cp3");
     fmanip.appendToFile(ratio_content, ratio_path)
-    console.log("cp4");
 }
 
 
@@ -56,25 +52,34 @@ async function runForAllCountries(path, cat) {
             continue
         }
     }
-    await fillRatioFile(path)
+    // await fillRatioFile(path)
 }
 
 async function runForEverything() {
+    paths = [];
     for (let k = 0; k < catNames.length; k++) {
         console.log("current category: " + catNames[k]);
-        let current_path = produceAppIdPath(catNames[k])
+        let current_path = produceAppIdPath(catNames[k]);
+        paths.push(current_path);
+        
         await runForAllCountries(current_path, catNames[k])
     }
+    console.log("merging");
+    fmanip.mergeFiles(paths, './app_ids/all_ids.txt');
 }
 
-function runScraper() {
-    runForEverything()    
+async function runScraper() {
+    await runForEverything()
+    console.log("finished everything");
     const destinationPath = "./Data/apps_data.csv"
-    // convert(destinationPath)
+    await convert(destinationPath)
 }
 
 
 async function convert(destination) {
+    console.log("Scraping app ids done!")
+    console.log("");
+    console.log("Converting app ids to app data...")
     result = await converter.convertIdsToData(destination)
 }
 

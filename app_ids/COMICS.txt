@@ -1,0 +1,2 @@
+com.naver.linewebtoon
+com.toonsutra.comicapp

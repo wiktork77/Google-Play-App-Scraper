@@ -1,0 +1,2 @@
+org.findmykids.app
+com.sand.airdroidkidp

@@ -1,0 +1,2 @@
+com.ak.ta.dainikbhaskar.activity
+com.eterno

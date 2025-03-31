@@ -1,0 +1,2 @@
+com.duolingo
+co.thewordlab.luzia
