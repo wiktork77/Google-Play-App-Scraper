@@ -1,0 +1,4 @@
+free: 1630
+paid: 14
+undefined: 2
+

@@ -26,7 +26,7 @@ async function getFreeAndPaidAppsCount(path) {
         'undefined': 0,
     }
     temp = await fmanip.fileToSet(path)
-    console.log("Analyzing apps' paid status (filling categories_ratio):");
+    console.log("Checking isPaid status of the Apps (filling categories_ratio):");
     id_arr = Array.from(temp)
     arr_len = id_arr.length;
     for (let i = 0; i < id_arr.length; i++) {

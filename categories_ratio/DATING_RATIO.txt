@@ -1,0 +1,4 @@
+free: 1937
+paid: 3
+undefined: 1
+

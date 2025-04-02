@@ -92,7 +92,6 @@ function mergeFiles(paths, outputPath) {
       paths.forEach(filePath => {
           if (fs.existsSync(filePath)) {
               const content = fs.readFileSync(filePath, 'utf8');
-              console.log("content: " + content.slice(0, -1));
               if (content.length > 0 ) {
                 mergedContent += content.slice(0, -1) + '\n';
               }

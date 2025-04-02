@@ -1,4 +1,4 @@
-const fmanip = require('./file_manip.js')
+const fmanip = require('./utility_tools/file_manip.js')
 const gplay = require('google-play-scraper');
 const catProb = {
     'ART_AND_DESIGN':	0.0353448275862069,
@@ -72,8 +72,6 @@ async function convertIdsToData(destination) {
     const idsPath = "./app_ids/all_ids.txt"
     fileContent = await fmanip.fileToSet(idsPath)
 
-    console.log(fileContent);
-
     console.log("removing duplicates done!")
 
     if (!fmanip.fileExists(destination)) {
@@ -94,7 +92,6 @@ async function convertIdsToData(destination) {
         }
         parsedCount += 1
         fmanip.overwriteLog(`${parsedCount}/${fileContent.size} parsed`);
-        inform(parsedCount)
     }
 }
 

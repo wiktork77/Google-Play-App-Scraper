@@ -1,6 +1,11 @@
-scraper = require('./scraper_runner.js');
+scraper = require('./scraper.js');
 
 (async () => {
-    await scraper.runScraper();
+    var computeRatio = false
+    var args = process.argv.slice(2);
+    if (args.length > 0) {
+        computeRatio = args[0] == "ratio";
+    }
+    await scraper.runScraper(computeRatio);
     console.log("Scraping done");
 })();
